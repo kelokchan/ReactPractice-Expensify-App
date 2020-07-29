@@ -1,17 +1,19 @@
 import moment from 'moment';
 
-const filterReducerDefaultState = {
+// Filters Reducer
+
+const filtersReducerDefaultState = {
   text: '',
-  sortBy: 'date', //date or amount
+  sortBy: 'date',
   startDate: moment().startOf('month'),
   endDate: moment().endOf('month')
 };
 
-const filtersReducer = (state = filterReducerDefaultState, action) => {
+export default (state = filtersReducerDefaultState, action) => {
   switch (action.type) {
     case 'SET_TEXT_FILTER':
       return {
-        ...state, // object spread operator
+        ...state,
         text: action.text
       };
     case 'SORT_BY_AMOUNT':
@@ -38,5 +40,3 @@ const filtersReducer = (state = filterReducerDefaultState, action) => {
       return state;
   }
 };
-
-export default filtersReducer;
